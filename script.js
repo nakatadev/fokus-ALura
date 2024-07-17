@@ -4,8 +4,8 @@ const curtoBt = document.querySelector('.app__card-button--curto');
 const longoBt = document.querySelector('.app__card-button--longo');
 const banner = document.querySelector('.app__image');
 const titulo = document.querySelector('.app__title');
-const startPauseBt = document.querySelector('#start-pause')
-
+const startPauseBt = document.querySelector('#start-pause');
+const iniciarOuPausarBt = document.querySelector('#start-pause span');
 const botoes = document.querySelectorAll('.app__card-button');
 
 const musicaFocoInput = document.querySelector('#alternar-musica');
@@ -76,6 +76,7 @@ const contagemRegressiva = () => {
         alert('Tempo finalizado!')
         return
     }
+    iniciarOuPausarBt.textContent = `Pausar`;
     tempoDecorridoEmSegundos -= 1
     console.log('Temporizador: ' + tempoDecorridoEmSegundos);
 }
@@ -95,4 +96,5 @@ function zerar() {
     pauseMusic.play()
     clearInterval(intervaloId)
     intervaloId = null
+    iniciarOuPausarBt.textContent = `Começar`;
 }
