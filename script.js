@@ -6,6 +6,7 @@ const banner = document.querySelector('.app__image');
 const titulo = document.querySelector('.app__title');
 const startPauseBt = document.querySelector('#start-pause');
 const iniciarOuPausarBt = document.querySelector('#start-pause span');
+const simbolStartPauseBt = document.querySelector('#start-pause img');
 const botoes = document.querySelectorAll('.app__card-button');
 
 const musicaFocoInput = document.querySelector('#alternar-musica');
@@ -77,6 +78,7 @@ const contagemRegressiva = () => {
         return
     }
     iniciarOuPausarBt.textContent = `Pausar`;
+    simbolStartPauseBt.setAttribute('src', `./imagens/pause.png`);
     tempoDecorridoEmSegundos -= 1
     console.log('Temporizador: ' + tempoDecorridoEmSegundos);
 }
@@ -97,4 +99,5 @@ function zerar() {
     clearInterval(intervaloId)
     intervaloId = null
     iniciarOuPausarBt.textContent = `Começar`;
+    simbolStartPauseBt.setAttribute ('src', `./imagens/play_arrow.png`);
 }
