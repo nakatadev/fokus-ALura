@@ -20,7 +20,7 @@ let intervaloId = null;
 
 musica.loop = true;
 
-
+const tempoTela = document.querySelector('#timer');
 
 
 musicaFocoInput.addEventListener('change', () => {
@@ -80,7 +80,7 @@ const contagemRegressiva = () => {
     iniciarOuPausarBt.textContent = `Pausar`;
     simbolStartPauseBt.setAttribute('src', `./imagens/pause.png`);
     tempoDecorridoEmSegundos -= 1
-    console.log('Temporizador: ' + tempoDecorridoEmSegundos);
+    mostrarTempo();
 }
 
 startPauseBt.addEventListener('click', iniciarOuPausar);
@@ -101,3 +101,10 @@ function zerar() {
     iniciarOuPausarBt.textContent = `Começar`;
     simbolStartPauseBt.setAttribute ('src', `./imagens/play_arrow.png`);
 }
+
+function mostrarTempo (){
+    const tempo = tempoDecorridoEmSegundos;
+    tempoTela.innerHTML = `${tempo}`;
+}
+
+mostrarTempo();
