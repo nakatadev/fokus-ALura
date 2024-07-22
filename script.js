@@ -9,13 +9,14 @@ const iniciarOuPausarBt = document.querySelector('#start-pause span');
 const simbolStartPauseBt = document.querySelector('#start-pause img');
 const botoes = document.querySelectorAll('.app__card-button');
 
+
 const musicaFocoInput = document.querySelector('#alternar-musica');
 const musica = new Audio('./sons/luna-rise-part-one.mp3');
 
 const pauseMusic = new Audio('./sons/pause.mp3');
 const playMusic = new Audio('./sons/play.wav');
 
-let tempoDecorridoEmSegundos = 1500;
+let tempoDecorridoEmSegundos = 15;
 let intervaloId = null;
 
 musica.loop = true;
@@ -79,8 +80,13 @@ function alterarContexto(contexto){
 
 const contagemRegressiva = () => {
     if (tempoDecorridoEmSegundos <= 0){
-        zerar()
+        const focoAtivo = html.getAttribute('data-contexto') == 'foco';
+        if (focoAtivo) {
+            const evento = new CustomEvent('FocoFinalizado');
+            document.dispatchEvent(evento)
+        }
         alert('Tempo finalizado!')
+        zerar()
         return
     }
     iniciarOuPausarBt.textContent = `Pausar`;
